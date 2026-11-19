@@ -3,7 +3,7 @@
 ## Base URL
 
 ```
-https://refa-202610-lbl-d8-refa.pantheonsite.io
+https://refa.lbl.gov
 ```
 
 ## Endpoints
@@ -16,7 +16,7 @@ https://refa-202610-lbl-d8-refa.pantheonsite.io
 
 All requests must carry a bearer access token. Tokens are obtained from the OAuth token endpoint using HTTP Basic client authentication:
 
-- **Token URL**: `https://refa-202610-lbl-d8-refa.pantheonsite.io/oauth/token`
+- **Token URL**: `https://refa.lbl.gov/oauth/token`
 - **Client credentials** (`CLIENT_ID` / `CLIENT_SECRET`): get them from the REFA API admin panel, under **"API Keys"**.
 - **Grant type**: `client_credentials`
 - **Scope**: `refa:calculate`
@@ -24,7 +24,7 @@ All requests must carry a bearer access token. Tokens are obtained from the OAut
 Token request (the `Authorization` header is `Basic base64(CLIENT_ID:CLIENT_SECRET)`):
 
 ```bash
-curl -X POST "https://refa-202610-lbl-d8-refa.pantheonsite.io/oauth/token" \
+curl -X POST "https://refa.lbl.gov/oauth/token" \
   -u "$CLIENT_ID:$CLIENT_SECRET" \
   -d "grant_type=client_credentials" \
   -d "scope=refa:calculate"
@@ -46,7 +46,7 @@ Response:
 Send the payload as a JSON body with the bearer token:
 
 ```bash
-curl -X POST "https://refa-202610-lbl-d8-refa.pantheonsite.io/refa-api/v1/calculate-feasible-projects" \
+curl -X POST "https://refa.lbl.gov/refa-api/v1/calculate-feasible-projects" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d @payload_calculate-feasible-projects.json
